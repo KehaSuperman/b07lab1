@@ -22,17 +22,17 @@ public class Driver
         Polynomial p3 = new Polynomial(c3, e3);
         
         double [] c4 = {1,1};
-        int [] e4 = {1,1};
+        int [] e4 = {1,2};
         Polynomial p4 = new Polynomial(c4, e4);
         
-        // Polynomial s = p1.add(p2);
-        // System.out.println("s(0.1) = " + s.evaluate(0.1));
-        // if(s.hasRoot(1))
-        // System.out.println("1 is a root of s");
-        // else
-        // System.out.println("1 is not a root of s");
+        Polynomial s = p1.add(p2);
+        System.out.println("s(0.1) = " + s.evaluate(0.1));
+        if(s.hasRoot(1))
+        System.out.println("1 is a root of s");
+        else
+        System.out.println("1 is not a root of s");
 
-        Polynomial s2 = p3.add(p4);
+        Polynomial s2 = p3.multiply(p4);
         s2.saveToFile("./output3.txt");
 
     }

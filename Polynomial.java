@@ -70,24 +70,24 @@ public class Polynomial
 		{
 			if (-1 == find(current_exp, new_exp))	//if doesn't find the current exp then add to the array
 			{
-				count++;
 				new_exp[count]=current_exp;
+				count++;
 			}
 		}
 		for (int current_exp : another_p.exponents) 
 		{
 			if (-1 == find(current_exp, new_exp))
 			{
-				count++;
 				new_exp[count]=current_exp;
+				count++;
 			}
 		}	//go through each exponent array and collect all the exponent needed for the new poly
 
-		new_exp=Arrays.copyOfRange(new_exp, 0, count+1);
+		new_exp=Arrays.copyOfRange(new_exp, 0, count);
 		new_coe=new double[count];
 
 		for (int i = 0; i < this.exponents.length; i++) new_coe[find(this.exponents[i], new_exp)] += this.coefficients[i];
-		for (int i = 0; i < this.exponents.length; i++) new_coe[find(this.exponents[i], new_exp)] += this.coefficients[i];
+		for (int i = 0; i < another_p.exponents.length; i++) new_coe[find(another_p.exponents[i], new_exp)] += another_p.coefficients[i];
 
 		Polynomial result_poly=new Polynomial(new_coe, new_exp);
 
@@ -141,7 +141,6 @@ public class Polynomial
 
 				if (i!=this.exponents.length-1) info += "+";
 			}
-			System.out.println(info);
 			myWriter.write(info + "\n");
 		}
 		catch (IOException error)
