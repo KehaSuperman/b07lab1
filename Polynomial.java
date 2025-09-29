@@ -33,16 +33,16 @@ public class Polynomial
 			exponents = new int[info_split.length];
 			for (int i = 0; i < coefficients.length; i++) 
 			{
-				if (info_split[i].length()==1)
+				String[] monomial = info_split[i].split("x");
+				if (monomial.length==1)
 				{
-					coefficients[i] = Double.parseDouble(info_split[i]);
+					coefficients[i] = Double.parseDouble(monomial[0]);
 					exponents[i] = 0;
 				}
 				else
 				{
-					String[] monomial = info_split[i].split("x");
-					coefficients[i] = Double.parseDouble(monomial[1]);
-					exponents[i] = Integer.parseInt(monomial[0]);
+					coefficients[i] = Double.parseDouble(monomial[0]);
+					exponents[i] = Integer.parseInt(monomial[1]);
 				}
 			}
 		}

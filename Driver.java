@@ -32,8 +32,11 @@ public class Driver
         else
         System.out.println("1 is not a root of s");
 
-        Polynomial s2 = p3.multiply(p4);
+        Polynomial s2 = p3.add(p4);
         s2.saveToFile("./output3.txt");
+
+        Polynomial s3 = new Polynomial("./output3.txt");
+        s3.saveToFile("./output4.txt");
 
     }
 }
