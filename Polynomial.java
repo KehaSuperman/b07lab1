@@ -18,6 +18,10 @@ public class Polynomial
 		exponents=new int[exp_arr.length];
 		System.arraycopy(coe_arr, 0, coefficients, 0, coe_arr.length);
 		System.arraycopy(exp_arr, 0, exponents, 0, exp_arr.length);
+		if (coefficients[0]==0)
+		{
+			System.out.println("Warning");
+		}
 	}
 
 	public Polynomial(String file_in) throws FileNotFoundException, IOException
@@ -63,6 +67,8 @@ public class Polynomial
 		double[] new_coe;
 		int[] new_exp = new int[this.exponents.length + another_p.exponents.length];
 		int count = 0;
+
+		if (this.coefficients.length==1 && this.coefficients[0]==0) return another_p;
 
 		for (int i = 0; i < new_exp.length; i++) new_exp[i]=-1;	//initialize the array so all the entry are -1
 		
@@ -117,7 +123,7 @@ public class Polynomial
 				int[] temp_exp = new int[]{this.exponents[i] + another_p.exponents[j]};
 				double[] temp_coe = new double[]{this.coefficients[i] * another_p.coefficients[j]};
 				Polynomial temp_poly = new Polynomial(temp_coe, temp_exp);
-				result =result.add(temp_poly);
+				result = result.add(temp_poly);
 			}
 		}
 		return result;
